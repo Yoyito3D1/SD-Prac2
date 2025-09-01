@@ -1,43 +1,90 @@
-💾 Distributed Sharded Database System 💾
-A hands-on project demonstrating the implementation of a distributed key-value storage system with sharding and fault-tolerant features! 🚀
+# 💾 Distributed Sharded Database System 💾
 
-🎯 Project Overview
-This project builds a scalable distributed database where multiple nodes store data and a Shard Master manages the distribution. The system supports dynamic addition/removal of nodes, key redistribution, and automatic detection of server failures, showcasing practical concepts in distributed systems. ⚡
+Explore a hands-on implementation of a distributed key-value storage system with **sharding**, **replication**, and **fault-tolerant features**! 🚀
 
-Implementation Highlights
-- **Shard Master**: Controls key assignment and node ranges.
-- **KVStorage Nodes**: Each node stores keys in a dictionary, supports transfer and redistribution.
-- **Clients**: Interact via gRPC to query and store keys.
-- **Scalability & Fault Tolerance**: Supports vertical and horizontal scaling, automatic redistribution, and leader election for replica masters.
+---
 
-🛠️ How It Works
-1. **Client Requests**: Clients query or store data; requests go through the Shard Master to locate responsible nodes.
-2. **Shard Master Management**: Tracks node ranges, updates assignments when nodes join/leave, and coordinates key redistribution.
-3. **KVStorage Operations**: Nodes handle keys, synchronize via transfer/redistribute methods.
-4. **Fault Tolerance**: Replica groups monitor each other (heartbeats); Paxos or Raft algorithms can elect a new replica master in case of failures.
+## 🎯 Project Overview
+This project demonstrates a **distributed database system** where multiple nodes store data and a **Shard Master** manages the distribution. It allows:
 
-🔍 System Features
-- Dynamic shard allocation and key redistribution
-- Support for adding/removing nodes on the fly
-- Horizontal & vertical scalability
-- Automatic failure detection and recovery
-- Synchronization between nodes for consistent data storage
+- Dynamic addition/removal of nodes
+- Automatic key redistribution
+- Fault detection
+- Vertical & horizontal scalability ⚡
 
-📚 Learning Goals
-- Understand client-server communication in distributed systems
-- Implement sharding strategies for load balancing
-- Apply fault-tolerant mechanisms and leader election algorithms
-- Gain hands-on experience with gRPC, replication, and key redistribution
+The system is built for **efficient access**, **balanced load**, and **resilient operations** in multi-node environments.
 
-📈 Real-World Inspiration
-- **MongoDB**: Uses shard clusters, config servers, and Mongos routers for scalable NoSQL storage.
-- **Apache Cassandra**: Uses ring-based nodes, replication, and consistency algorithms for distributed storage.
+---
 
-🙌 Contributions & Credits
-Implemented as part of a Distributed Systems course practice. Thanks to open-source tools and concepts that guided this implementation: Python, gRPC, Paxos/Raft consensus.
+## 🛠️ System Architecture
 
-📫 Contact & Support
-For questions or discussions, feel free to open an issue or reach out! ✉️
+**Shard Master**  
+- Controls key assignment and node ranges  
+- Redistributes keys when nodes join or leave  
 
-Thank you for exploring this project! 🚀
-Learn and experiment with distributed systems while building resilient and scalable architectures! 🌐💡
+**KVStorage Nodes**  
+- Each node stores keys in memory  
+- Can transfer or redistribute keys to other nodes  
+
+**Clients**  
+- Communicate with the Shard Master via gRPC to read/write data  
+
+**Fault-Tolerant Mechanisms**  
+- Replica groups detect failures automatically  
+- Leader election (Paxos or Raft) ensures a new replica master is chosen if necessary  
+
+---
+
+## 💡 Key Features
+- **Dynamic shard allocation** for balanced load  
+- **Adding/removing nodes** on the fly  
+- **Horizontal & vertical scalability**  
+- **Automatic detection and recovery** from node failures  
+- **Synchronized key redistribution** between nodes  
+
+---
+
+## 🔍 How It Works
+1. **Client Requests**: Clients send queries or updates via gRPC  
+2. **Shard Master Management**: Determines which node is responsible for each key and manages redistribution when the system changes  
+3. **KVStorage Operations**: Nodes store keys, transfer data, and synchronize as instructed by the Shard Master  
+4. **Fault Tolerance**: Heartbeats detect failures; consensus algorithms elect new replica masters when needed  
+
+---
+
+## 📚 Learning Goals
+- Understand **distributed client-server communication**  
+- Implement **sharding** for load balancing  
+- Apply **fault-tolerant techniques** and **leader election**  
+- Gain experience with **gRPC**, **key redistribution**, and **replication**  
+
+---
+
+## 🌐 Real-World Inspirations
+**MongoDB**  
+- Sharded NoSQL database with shard clusters, config servers, and Mongos routers  
+
+**Apache Cassandra**  
+- Ring-based architecture with replication, distributed nodes, and consensus-based consistency  
+
+---
+
+## 📈 Takeaways
+- Scalable **distributed system architecture**  
+- Dynamic **data redistribution**  
+- **Fault tolerance** in multi-node environments  
+- Hands-on practice with **distributed algorithms** and **gRPC**  
+
+---
+
+## 🙌 Contributions & Credits
+Implemented as part of a **Distributed Systems course project**.  
+Thanks to open-source technologies and concepts that guided this implementation: **Python, gRPC, Paxos/Raft consensus**.  
+
+---
+
+## 📫 Contact & Support
+Questions or discussions? Open an issue or reach out! ✉️  
+
+Thank you for checking out this project! 🚀  
+Learn, experiment, and build **resilient distributed systems**! 🌐💡
